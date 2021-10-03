@@ -30,7 +30,7 @@ public class UserMealsUtil {
         List<UserMealWithExcess> userMealWithExcessList = new ArrayList<>();
         Map<Integer, Integer> allCaloriesPerDay = new HashMap<>();
         for (UserMeal m: meals) {
-            allCaloriesPerDay.merge(m.getDateTime().getDayOfMonth(), m.getCalories(), (a, b) -> b + allCaloriesPerDay.get(m.getDateTime().getDayOfMonth()));
+            allCaloriesPerDay.merge(m.getDateTime().getDayOfMonth(), m.getCalories(), (a, b) -> b + a);
         }
         for (UserMeal m: meals) {
             if (TimeUtil.isBetweenHalfOpen(m.getDateTime().toLocalTime(), startTime, endTime)) {
